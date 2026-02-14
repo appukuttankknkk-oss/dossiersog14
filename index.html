@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Res E-Dossier System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        body { 
+            font-family: 'Noto Sans Devanagari', sans-serif; 
+            background-color: #f3f4f6;
+            color: #111827;
+            margin: 0;
+            padding: 0;
+        }
+        .dossier-preview {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            color: black;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .dossier-table {
+            width: 100% !important;
+            table-layout: fixed !important;
+            border-collapse: collapse !important;
+            border: 2px solid black !important;
+        }
+        
+        .dossier-table td {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            border: 1px solid black !important;
+            padding: 6px 8px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            line-height: 1.5;
+            font-size: 11px;
+            color: black !important;
+            vertical-align: top;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            html, body {
+                height: auto !important;
+                overflow: visible !important;
+                background: white !important;
+            }
+            .no-print { 
+                display: none !important; 
+            }
+            #root, .flex, .flex-col, .md\:flex-row, .flex-1 {
+                display: block !important;
+                height: auto !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: none !important;
+                position: static !important;
+                box-shadow: none !important;
+                background: white !important;
+            }
+            .dossier-preview { 
+                margin: 0 !important; 
+                padding: 10mm !important; 
+                width: 210mm !important; 
+                box-shadow: none !important; 
+                border: none !important;
+                display: block !important;
+                position: relative !important;
+                overflow: visible !important;
+            }
+            * {
+                color: black !important;
+                text-shadow: none !important;
+            }
+            tr, .page-break-avoid, tbody {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .appendix-section {
+                page-break-before: auto;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="root"></div>
+    <!-- Entry point for the application -->
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
