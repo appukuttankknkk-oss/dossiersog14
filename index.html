@@ -55,10 +55,10 @@
         @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 15mm; /* Standard professional margin */
             }
             html, body {
-                width: 210mm !important;
+                width: auto !important; /* Allow browser to determine width based on @page */
                 height: auto !important;
                 overflow: visible !important;
                 background: white !important;
@@ -68,7 +68,8 @@
             .no-print { 
                 display: none !important; 
             }
-            #root, .flex, .flex-col, .md\:flex-row, .flex-1 {
+            /* Reset all wrappers to be transparent and full width */
+            #root, .flex, .flex-col, .md\:flex-row, .flex-1, #dossier-content {
                 display: block !important;
                 height: auto !important;
                 min-height: 0 !important;
@@ -80,6 +81,7 @@
                 position: static !important;
                 box-shadow: none !important;
                 background: white !important;
+                border: none !important;
             }
             .dossier-preview { 
                 margin: 0 !important; 
